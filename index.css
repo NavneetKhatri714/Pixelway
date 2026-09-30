@@ -1,0 +1,449 @@
+@import "tailwindcss";
+
+:root {
+  /* ── Enterprise Palette ── */
+  --color-bg-void: #050812;
+  --color-bg-surface: #070B14;
+  --color-bg-card: #0B1220;
+  --color-bg-card-hover: #0E1627;
+  --color-bg-card-subtle: rgba(11, 18, 32, 0.7);
+
+  --color-ink-primary: #F1F5FF;
+  --color-ink-secondary: #8997B2;
+  --color-ink-muted: #56647E;
+
+  --color-accent-blue: #3B82F6;
+  --color-accent-blue-hover: #2563EB;
+  --color-accent-cyan: #06B6D4;
+
+  --color-status-safe: #10B981;
+  --color-status-warning: #F59E0B;
+  --color-status-critical: #EF4444;
+
+  /* ── Radii ── */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+
+  /* ── Fonts ── */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ── Base Styles ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg-void);
+  color: var(--color-ink-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Smooth Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-void);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(137, 151, 178, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+/* ── Global Centered Container (Exact 1200px System) ── */
+.app-container {
+  max-width: 1200px;
+  width: calc(100% - 48px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Section Rhythm ── */
+.section-wrapper {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .section-wrapper {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-wrapper {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+.section-heavy {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .section-heavy {
+    padding-top: 110px;
+    padding-bottom: 110px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-heavy {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+}
+
+/* ── Unified Premium Card System ── */
+.saas-card {
+  background: var(--color-bg-card);
+  border: 1px solid rgba(140, 160, 200, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.saas-card:hover {
+  background: var(--color-bg-card-hover);
+  border-color: rgba(70, 130, 255, 0.30);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.5), 0 0 20px -4px rgba(59, 130, 246, 0.12);
+  transform: translateY(-3px);
+}
+
+.saas-card-flat {
+  background: rgba(11, 18, 32, 0.65);
+  border: 1px solid rgba(140, 160, 200, 0.10);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+}
+
+/* ── Section Eyebrow Label ── */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #60A5FA;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.20);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+/* ── Section Headings & Subtitles ── */
+.section-title {
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 680;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-ink-primary);
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  font-size: clamp(15px, 1.5vw, 17px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-ink-secondary);
+}
+
+/* ── Compact Status Badges ── */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+.badge-critical {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #F87171;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.badge-warning {
+  background-color: rgba(245, 158, 11, 0.12);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.badge-safe {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.badge-neutral {
+  background-color: rgba(137, 151, 178, 0.10);
+  color: #8997B2;
+  border: 1px solid rgba(137, 151, 178, 0.20);
+}
+
+/* ── Button Hierarchy ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFFFFF;
+  background-color: #2563EB;
+  border-radius: 9px;
+  box-shadow: 0 1px 12px rgba(37, 99, 235, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  background-color: #3B82F6;
+  box-shadow: 0 2px 20px rgba(37, 99, 235, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-primary .btn-arrow {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8997B2;
+  background-color: transparent;
+  border: 1px solid rgba(140, 160, 200, 0.16);
+  border-radius: 9px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover {
+  color: #F1F5FF;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(140, 160, 200, 0.30);
+  transform: translateY(-1px);
+}
+
+/* ── Atmospheric Accents ── */
+.radial-glow-blue {
+  background: radial-gradient(circle 700px at 50% 0%, rgba(37, 99, 235, 0.08), transparent 70%);
+}
+
+.subtle-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
+
+/* ── Data Flow Pulse Animation ── */
+@keyframes dataFlow {
+  0% { transform: translateY(-100%); opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.animate-data-flow {
+  animation: dataFlow 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+
+/* =========================================================
+   PIXELWAY PREMIUM POLISH
+   Preserves the original visual language while adding:
+   - richer depth
+   - refined glass surfaces
+   - subtle atmospheric lighting
+   - stronger typography hierarchy
+   - premium focus/hover states
+   ========================================================= */
+
+:root {
+  --pw-glow-blue: rgba(59, 130, 246, .22);
+  --pw-glow-cyan: rgba(6, 182, 212, .14);
+  --pw-border: rgba(148, 163, 184, .13);
+  --pw-surface: rgba(9, 15, 28, .78);
+}
+
+body {
+  background:
+    radial-gradient(900px 500px at 12% -5%, rgba(37, 99, 235, .10), transparent 65%),
+    radial-gradient(700px 450px at 88% 4%, rgba(6, 182, 212, .055), transparent 68%),
+    #050812;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+::selection {
+  background: rgba(59,130,246,.35);
+  color: #fff;
+}
+
+button, a, input, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  transition:
+    transform .22s cubic-bezier(.16,1,.3,1),
+    box-shadow .22s cubic-bezier(.16,1,.3,1),
+    border-color .22s ease,
+    background-color .22s ease,
+    color .22s ease;
+}
+
+button:active {
+  transform: scale(.985);
+}
+
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 3px rgba(59,130,246,.08), 0 0 24px rgba(59,130,246,.06);
+}
+
+.premium-dashboard {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(800px 500px at 70% -10%, rgba(37,99,235,.08), transparent 65%),
+    radial-gradient(600px 400px at 0% 30%, rgba(6,182,212,.035), transparent 70%);
+}
+
+.premium-dashboard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.018), transparent 20%),
+    radial-gradient(circle at 50% 0%, rgba(59,130,246,.05), transparent 42%);
+}
+
+.premium-dashboard .app-container {
+  position: relative;
+}
+
+.premium-dashboard header {
+  box-shadow: 0 1px 0 rgba(255,255,255,.04), 0 16px 50px rgba(0,0,0,.18);
+}
+
+.premium-dashboard .app-container > section > div,
+.premium-dashboard main > section > div {
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.16),
+    inset 0 1px 0 rgba(255,255,255,.025);
+  backdrop-filter: blur(18px);
+}
+
+.premium-dashboard main > section:first-child > div {
+  border-color: rgba(148,163,184,.14);
+}
+
+.premium-dashboard main > section > div:hover {
+  border-color: rgba(96,165,250,.18);
+}
+
+.premium-dashboard h1,
+.premium-dashboard h2 {
+  letter-spacing: -.025em;
+}
+
+.premium-dashboard input {
+  background: rgba(5,8,18,.58) !important;
+  border-color: rgba(148,163,184,.12) !important;
+}
+
+.premium-dashboard input::placeholder {
+  color: #536078;
+}
+
+.premium-dashboard a[href*="google.com/maps"] {
+  transition: all .22s ease;
+}
+
+.premium-dashboard a[href*="google.com/maps"]:hover {
+  border-color: rgba(96,165,250,.35);
+  background: rgba(59,130,246,.08);
+  transform: translateY(-1px);
+}
+
+.premium-dashboard .animate-pulse {
+  box-shadow: 0 0 0 0 rgba(52,211,153,.35);
+}
+
+@keyframes pwGlow {
+  0%, 100% { opacity: .55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.035); }
+}
+
+.premium-orb {
+  animation: pwGlow 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
